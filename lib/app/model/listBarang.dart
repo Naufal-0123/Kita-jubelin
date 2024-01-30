@@ -8,24 +8,24 @@ String listBarangToJson(ListBarang data) => json.encode(data.toJson());
 class ListBarang {
   String status;
   String msg;
-  List<Barang> list;
+  List<Barang> data;
 
   ListBarang({
     required this.status,
     required this.msg,
-    required this.list,
+    required this.data,
   });
 
   factory ListBarang.fromJson(Map<String, dynamic> json) => ListBarang(
         status: json["status"],
         msg: json["msg"],
-        list: List<Barang>.from(json["data"].map((x) => Barang.fromJson(x))),
+        data: List<Barang>.from(json["data"].map((x) => Barang.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "msg": msg,
-        "data": List<dynamic>.from(list.map((x) => x.toJson())),
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
       };
 }
 

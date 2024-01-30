@@ -34,8 +34,8 @@ class HomeController extends GetxController {
       print("succes mengambil data");
       print(response.body);
       ListBarang result = listBarangFromJson(response.body);
-      barang = result.list;
-      filter = result.list;
+      barang = result.data;
+      filter = result.data;
       jumlahBarang = barang.length;
       jumlahFilter.value = filter.length;
     } else {

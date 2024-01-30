@@ -57,13 +57,13 @@ class HomeView extends GetView<HomeController> {
                           Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(top: 15),
+                                margin: EdgeInsets.only(top: 15, bottom: 25),
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.grey,
-                                        blurRadius: 8,
-                                        offset: Offset(1, 1),
+                                        blurRadius: 10,
+                                        offset: Offset(2, 5),
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(15),
@@ -256,44 +256,46 @@ class HomeView extends GetView<HomeController> {
                                           controller.jumlahFilter.value,
                                           (index) {
                                         final data = controller.filter[index];
-                                        return InkWell(
-                                          onTap: () {},
-                                          child: Container(
-                                            width: 150,
-                                            height: 150,
-                                            margin: EdgeInsets.only(top: 25),
-                                            decoration: BoxDecoration(
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.grey,
-                                                  blurRadius: 8,
-                                                  offset: Offset(1, 1),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              color: Color.fromARGB(
-                                                  255, 0, 255, 204),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(data.nama,
+                                        return Stack(
+                                          children: [
+                                            Container(
+                                              width: 150,
+                                              height: 150,
+                                              margin: EdgeInsets.only(top: 30),
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey,
+                                                    blurRadius: 10,
+                                                    offset: Offset(2, 3),
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Color.fromARGB(
+                                                    255, 0, 255, 204),
+                                              ),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 35,
+                                                  ),
+                                                  Text(
+                                                    data.nama,
                                                     style: TextStyle(
                                                       fontSize: 19,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       color: Color.fromARGB(
                                                           255, 255, 255, 255),
-                                                    )),
-                                                Container(
-                                                  margin:
-                                                      EdgeInsets.only(top: 25),
-                                                  child: Column(
-                                                    children: [
-                                                      Text(
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    margin:
+                                                        EdgeInsets.only(top: 0),
+                                                    child: Column(
+                                                      children: [
+                                                        Text(
                                                           rupiahFormat(
                                                               data.harga),
                                                           style: TextStyle(
@@ -306,60 +308,62 @@ class HomeView extends GetView<HomeController> {
                                                                     255,
                                                                     255,
                                                                     255),
-                                                          )),
-                                                    ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 7,
-                                                ),
-                                                Container(
-                                                  height: 60,
-                                                  width: 140,
-                                                  decoration: BoxDecoration(
+                                                  SizedBox(
+                                                    height: 3,
+                                                  ),
+                                                  Container(
+                                                    height: 60,
+                                                    width: 140,
+                                                    decoration: BoxDecoration(
                                                       boxShadow: [
                                                         BoxShadow(
                                                           color: Colors.grey,
                                                           blurRadius: 8,
-                                                          offset: Offset(1, 1),
-                                                        )
+                                                          offset: Offset(1, 3),
+                                                        ),
                                                       ],
                                                       color: Colors.white,
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                              bottomLeft: Radius
-                                                                  .circular(15),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          15))),
-                                                  child: Row(
-                                                    children: [
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                            left: 35,
-                                                            right: 20,
-                                                            top: 5),
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      bottom:
-                                                                          5),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .archive_outlined,
-                                                                size: 25,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        0,
-                                                                        255,
-                                                                        204),
+                                                        bottomLeft:
+                                                            Radius.circular(15),
+                                                        bottomRight:
+                                                            Radius.circular(15),
+                                                      ),
+                                                    ),
+                                                    child: Row(
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 35,
+                                                                  right: 20,
+                                                                  top: 5),
+                                                          child: Column(
+                                                            children: [
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        bottom:
+                                                                            5),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .archive_outlined,
+                                                                  size: 25,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          255,
+                                                                          204),
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
+                                                              Text(
                                                                 data.stok
                                                                     .toString(),
                                                                 style:
@@ -374,33 +378,35 @@ class HomeView extends GetView<HomeController> {
                                                                           0,
                                                                           255,
                                                                           204),
-                                                                )),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                            top: 5),
-                                                        child: Column(
-                                                          children: [
-                                                            Container(
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      bottom:
-                                                                          5),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .star_border_outlined,
-                                                                size: 25,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        0,
-                                                                        255,
-                                                                        204),
+                                                                ),
                                                               ),
-                                                            ),
-                                                            Text(
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  top: 5),
+                                                          child: Column(
+                                                            children: [
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        bottom:
+                                                                            5),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .star_border_outlined,
+                                                                  size: 25,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          255,
+                                                                          204),
+                                                                ),
+                                                              ),
+                                                              Text(
                                                                 data.rating
                                                                     .toString(),
                                                                 style:
@@ -415,16 +421,48 @@ class HomeView extends GetView<HomeController> {
                                                                           0,
                                                                           255,
                                                                           204),
-                                                                )),
-                                                          ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                )
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
+                                            Positioned(
+                                              top: 0,
+                                              left: 44,
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(Routes.HAMPER);
+                                                },
+                                                child: Container(
+                                                  width: 65,
+                                                  height: 65,
+                                                  decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: Colors.grey,
+                                                        blurRadius: 8,
+                                                        offset: Offset(1, 3),
+                                                      )
+                                                    ],
+                                                    shape: BoxShape.circle,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 255, 204),
+                                                  ),
+                                                  child: Icon(
+                                                    Icons.shop_two_outlined,
+                                                    color: Color.fromARGB(
+                                                        255, 255, 255, 255),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       })));
                                 } else {
