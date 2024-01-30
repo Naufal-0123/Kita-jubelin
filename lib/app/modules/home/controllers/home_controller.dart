@@ -27,8 +27,7 @@ class HomeController extends GetxController {
     UserLogin data = userLoginFromJson(login!);
     String token = "Bearer " + data.token;
     print(token);
-    Uri urlApi = Uri.parse("${dotenv.env['BASE_URL']}barang/list");
-    // final response = await http.get(urlApi);
+    Uri urlApi = Uri.parse("${dotenv.env['BASE_URL']}produk/list");
     final response = await http.get(urlApi, headers: {"Authorization": token});
     print(response.statusCode);
     if (response.statusCode == 200) {
@@ -44,16 +43,20 @@ class HomeController extends GetxController {
     }
   }
 
-  getSearch() {
+  void getSearch() {
+    // Mendapatkan kata kunci pencarian
+    String keyword = search.text.toLowerCase();
+
+    // Filtering berdasarkan nama, harga, rating, dan stok
     filter = barang
-        .where((element) => element.nama.toLowerCase().contains(search.text))
+        .where((element) =>
+            element.nama.toLowerCase().contains(keyword) ||
+            element.harga.toString().contains(keyword) ||
+            element.rating.toString().contains(keyword) ||
+            element.stok.toString().contains(keyword))
         .toList();
-    filter = barang
-        .where((element) => element.harga.toString().contains(search.text))
-        .toList();
-    filter = barang
-        .where((element) => element.rating.toLowerCase().contains(search.text))
-        .toList();
+
+    // Menampilkan hasil filter
     print("ok");
     print(filter.length);
     jumlahFilter.value = filter.length;

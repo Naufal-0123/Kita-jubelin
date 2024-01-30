@@ -6,8 +6,10 @@ import 'package:get/get.dart';
 
 import '../../../routes/app_pages.dart';
 import '../controllers/create_controller.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 class CreateView extends GetView<CreateController> {
+  final create = Get.put(CreateController());
   final _formKey = GlobalKey<FormState>();
   RxBool isLoading = RxBool(false);
 
@@ -54,8 +56,8 @@ class CreateView extends GetView<CreateController> {
                       TextFormField(
                         // maxLines: 5,
                         controller: controller.nama,
-                        validator: (nama) => nama!.length < 8
-                            ? 'Nama barang minimal 8 karakter!'
+                        validator: (nama) => nama!.length < 5
+                            ? 'Nama barang minimal 5 karakter!'
                             : null,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         style: TextStyle(color: Colors.black),
@@ -159,7 +161,7 @@ class CreateView extends GetView<CreateController> {
                                 : () async {
                                     if (_formKey.currentState!.validate()) {
                                       isLoading.value = true;
-                                      // await authC.login();
+                                      await create.create();
                                       isLoading.value = false;
                                     }
                                   },

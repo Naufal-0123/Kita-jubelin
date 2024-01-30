@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,6 +41,7 @@ class HomeView extends GetView<HomeController> {
               controller.getSearch();
             },
           ),
+          automaticallyImplyLeading: false,
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -249,185 +251,179 @@ class HomeView extends GetView<HomeController> {
                                     ConnectionState.done) {
                                   return Obx(() => Wrap(
                                       spacing: 30,
-                                      runSpacing: 30,
+                                      runSpacing: 15,
                                       children: List.generate(
                                           controller.jumlahFilter.value,
                                           (index) {
                                         final data = controller.filter[index];
-                                        return Container(
-                                          width: 150,
-                                          height: 150,
-                                          margin: EdgeInsets.only(top: 15),
-                                          decoration: BoxDecoration(
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                                blurRadius: 8,
-                                                offset: Offset(1, 1),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: Color.fromARGB(
-                                                255, 0, 255, 204),
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: 15,
-                                              ),
-                                              Text(data.nama,
-                                                  style: TextStyle(
-                                                    fontSize: 19,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Color.fromARGB(
-                                                        255, 255, 255, 255),
-                                                  )),
-                                              SizedBox(
-                                                height: 45,
-                                              ),
-                                              Container(
-                                                height: 60,
-                                                width: 140,
-                                                decoration: BoxDecoration(
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color: Colors.grey,
-                                                        blurRadius: 8,
-                                                        offset: Offset(1, 1),
-                                                      )
-                                                    ],
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            bottomLeft: Radius
-                                                                .circular(15),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    15))),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 15, top: 5),
-                                                      child: Column(
-                                                        children: [
-                                                          Container(
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    bottom: 5),
-                                                            child: Icon(
-                                                              Icons
-                                                                  .money_outlined,
-                                                              size: 25,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      0,
-                                                                      255,
-                                                                      204),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                              data.harga
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        0,
-                                                                        255,
-                                                                        204),
-                                                              )),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 10,
-                                                          right: 10,
-                                                          top: 5),
-                                                      child: Column(
-                                                        children: [
-                                                          Container(
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    bottom: 5),
-                                                            child: Icon(
-                                                              Icons
-                                                                  .archive_outlined,
-                                                              size: 25,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      0,
-                                                                      255,
-                                                                      204),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                              data.stok
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        0,
-                                                                        255,
-                                                                        204),
-                                                              )),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 5),
-                                                      child: Column(
-                                                        children: [
-                                                          Container(
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    bottom: 5),
-                                                            child: Icon(
-                                                              Icons
-                                                                  .star_border_outlined,
-                                                              size: 25,
-                                                              color: Color
-                                                                  .fromARGB(
-                                                                      255,
-                                                                      0,
-                                                                      255,
-                                                                      204),
-                                                            ),
-                                                          ),
-                                                          Text(data.rating,
-                                                              style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Color
-                                                                    .fromARGB(
-                                                                        255,
-                                                                        0,
-                                                                        255,
-                                                                        204),
-                                                              )),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                        return InkWell(
+                                          onTap: () {},
+                                          child: Container(
+                                            width: 150,
+                                            height: 150,
+                                            margin: EdgeInsets.only(top: 25),
+                                            decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey,
+                                                  blurRadius: 8,
+                                                  offset: Offset(1, 1),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Color.fromARGB(
+                                                  255, 0, 255, 204),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 5,
                                                 ),
-                                              )
-                                            ],
+                                                Text(data.nama,
+                                                    style: TextStyle(
+                                                      fontSize: 19,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255),
+                                                    )),
+                                                Container(
+                                                  margin:
+                                                      EdgeInsets.only(top: 25),
+                                                  child: Column(
+                                                    children: [
+                                                      Text(
+                                                          rupiahFormat(
+                                                              data.harga),
+                                                          style: TextStyle(
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255),
+                                                          )),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 7,
+                                                ),
+                                                Container(
+                                                  height: 60,
+                                                  width: 140,
+                                                  decoration: BoxDecoration(
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          color: Colors.grey,
+                                                          blurRadius: 8,
+                                                          offset: Offset(1, 1),
+                                                        )
+                                                      ],
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                              bottomLeft: Radius
+                                                                  .circular(15),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          15))),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 35,
+                                                            right: 20,
+                                                            top: 5),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      bottom:
+                                                                          5),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .archive_outlined,
+                                                                size: 25,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        0,
+                                                                        255,
+                                                                        204),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                                data.stok
+                                                                    .toString(),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          255,
+                                                                          204),
+                                                                )),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 5),
+                                                        child: Column(
+                                                          children: [
+                                                            Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      bottom:
+                                                                          5),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .star_border_outlined,
+                                                                size: 25,
+                                                                color: Color
+                                                                    .fromARGB(
+                                                                        255,
+                                                                        0,
+                                                                        255,
+                                                                        204),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                                data.rating
+                                                                    .toString(),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          0,
+                                                                          255,
+                                                                          204),
+                                                                )),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         );
                                       })));
@@ -457,4 +453,10 @@ class HomeView extends GetView<HomeController> {
           ),
         ));
   }
+}
+
+rupiahFormat(int harga) {
+  // Lakukan formatting nilai harga ke dalam format mata uang Rupiah
+  final currencyFormat = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp');
+  return currencyFormat.format(harga);
 }

@@ -44,7 +44,7 @@ class RegisterController extends GetxController {
       preferences.setString("register", response.body.toString());
       Get.offAllNamed(Routes.LOGIN, arguments: data);
       log("data saved");
-      Get.snackbar("Success", "Berhasil registe");
+      Get.snackbar("Success", "Berhasil register");
     } else {
       log("register failed");
       Get.defaultDialog(
